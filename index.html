@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offre de Développement — Plateforme Digitale AFS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --primary: #2c3e50;
+            --accent: #0056b3;
+            --accent-light: #e8f0fe;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --text: #333;
+            --muted: #667085;
+            --light-bg: #f8f9fa;
+            --border: #e9ecef;
+            --surface: #ffffff;
+            --radius: 14px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 38%);
+        }
+
+        .container {
+            width: min(1150px, 92vw);
+            margin: 0 auto;
+        }
+
+        .nav-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            padding: 14px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 54px 0 34px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 14px;
+            font-size: clamp(30px, 4.2vw, 48px);
+            line-height: 1.15;
+        }
+
+        .hero p {
+            margin: 16px 0 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .hero-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 22px;
+        }
+
+        .hero-card .line {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px dashed var(--border);
+            gap: 14px;
+            font-size: 14px;
+        }
+
+        .hero-card .line:last-child {
+            border-bottom: 0;
+        }
+
+        .hero-card strong {
+            color: var(--primary);
+        }
+
+        .section {
+            padding: 30px 0;
+        }
+
+        .section-head {
+            margin-bottom: 14px;
+        }
+
+        .section-head h2 {
+            font-size: 32px;
+        }
+
+        h2[id] {
+            scroll-margin-top: 90px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            margin: 8px 0 0;
+            line-height: 1.7;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card p,
+        .card li {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .card ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+
+        .scope-table,
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .scope-table th,
+        .scope-table td,
+        .price-table th,
+        .price-table td {
+            padding: 13px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        .scope-table th,
+        .price-table th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: .2px;
+        }
+
+        .scope-table tr:last-child td,
+        .price-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .phase {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 4px 9px;
+            white-space: nowrap;
+        }
+
+        .phase.p1 {
+            background: #e8f0fe;
+            color: #0056b3;
+        }
+
+        .phase.p2 {
+            background: #fef9e7;
+            color: #d17f0b;
+        }
+
+        .phase.p3 {
+            background: #eafaf1;
+            color: #1d8f4a;
+        }
+
+        .offer-box {
+            margin-top: 18px;
+            background: linear-gradient(130deg, var(--primary) 0%, #314e72 100%);
+            border-radius: 16px;
+            padding: 26px;
+            color: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .offer-box .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .offer-box .title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            opacity: .82;
+        }
+
+        .offer-box .amount {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.1;
+            margin-top: 8px;
+        }
+
+        .offer-box .sub {
+            margin-top: 7px;
+            opacity: .85;
+            font-size: 13px;
+        }
+
+
+        .info-band {
+            margin-top: 14px;
+            border-left: 4px solid var(--accent);
+            background: #f0f7ff;
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #3a4b61;
+        }
+
+        .timeline {
+            margin-top: 8px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .timeline-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 13px 14px;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 12px;
+            align-items: start;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item .month {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact {
+            background: #fafbfc;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 14px;
+        }
+
+        .contact p {
+            margin: 8px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact strong {
+            color: var(--primary);
+        }
+
+        .footer {
+            padding: 28px 0 40px;
+            text-align: center;
+            color: #98a2b3;
+            font-size: 13px;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .section-head h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrap">
+        <div class="container nav">
+            <a href="#top" class="brand">
+                <img src="logo afs.jpg" alt="Logo AFS">
+                <span>AFS — digitalisation</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#titre-perimetre">Périmètre</a>
+                <a href="#titre-methode">Méthode</a>
+                <a href="#titre-modalite">Modalités</a>
+                <a href="#titre-offre">Offre</a>
+                <a href="#titre-contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <header class="hero" id="top">
+        <div class="container hero-grid">
+            <div>
+                <span class="badge">Proposition commerciale — Exécution CCT AFS</span>
+                <h1>Offre de réalisation de la plateforme digitale AFS</h1>
+                <p>Cette offre couvre l’exécution des spécifications CCT_00 à CCT_04, avec un déploiement progressif sur 10 mois, une migration de données maîtrisée et un accompagnement des équipes AFS.</p>
+                <p><strong>Langue :</strong> Français · <strong>Devise :</strong> Ariary (Ar) · <strong>Validité :</strong> jusqu'à fin juin 2026</p>
+            </div>
+            <aside class="hero-card">
+                <div class="line"><span>Client</span><strong>Association FUNHECE SMIE (AFS)</strong></div>
+                <div class="line"><span>Référence</span><strong>OFFRE-2026-AFS-EXEC-01</strong></div>
+                <div class="line"><span>Date</span><strong>04 Mars 2026</strong></div>
+                <div class="line"><span>Prestataire</span><strong>RALAIARISOA Tolotriniavo Hubert</strong></div>
+            </aside>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="perimetre">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="titre-perimetre">Périmètre couvert</h2>
+                    <p>Exécution intégrale des modules définis dans le cahier des charges principal et ses annexes fonctionnelles, rédigée le 27 Février 2026.</p>
+                </div>
+                <table class="scope-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Contenu principal</th>
+                            <th>Référence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Socle Plateforme</strong></td>
+                            <td>Authentification, rôles & permissions, API backend, base PostgreSQL, traçabilité, sécurité</td>
+                            <td>CCT_00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Module 1 — Parcours Patient & DNS</strong></td>
+                            <td>Éligibilité, accueil, file d’attente, dossier médical progressif, portail adhérent</td>
+                            <td>CCT_01</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Module 2 — Pharmacie & Supply Chain</strong></td>
+                            <td>Dispensation, supervision stock multi-sites, dispatch, commandes & pilotage supply</td>
+                            <td>CCT_02</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Module 3 — Recouvrement & Finances</strong></td>
+                            <td>Saisie unifiée, lettrage, workflow de relance, scoring et portail adhérent</td>
+                            <td>CCT_03</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Module 4 — PEC</strong></td>
+                            <td>Moteur de plafonds, émission attestation, QR validation, rapprochement factures</td>
+                            <td>CCT_04</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="methode">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="titre-methode">Méthode d’exécution</h2>
+                    <p>Approche incrémentale, orientée valeur métier, avec gouvernance projet, contrôle qualité continu et validation formelle à chaque jalon de recette. Le prestataire s’engage à transmettre un rapport à la fin de chaque sprint et un rapport de synthèse à la fin de chaque mois.</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <h3>1. Cadrage opérationnel</h3>
+                        <p>Ateliers de lancement multi-acteurs, formalisation des processus cibles, backlog priorisé et critères d’acceptation par module.</p>
+                        <ul>
+                            <li>Kick-off, gouvernance et planning détaillé sprint par sprint.</li>
+                            <li>Matrice rôles/permissions alignée sur les exigences CCT.</li>
+                            <li>Plan de migration par lot avec stratégie de reprise et contrôle de cohérence.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>2. Développement par phases</h3>
+                        <p>Livraison progressive MVP puis V2/V3, en conservant la continuité de service des équipes AFS et la stabilité des opérations.</p>
+                        <ul>
+                            <li>Déploiement incrémental par module avec démonstrations de fin de sprint.</li>
+                            <li>Contrôles qualité : tests unitaires, tests d’intégration et tests métier.</li>
+                            <li>Sécurisation des flux sensibles : traçabilité, journalisation et droits d’accès.</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>3. Recette & transfert</h3>
+                        <p>Recette fonctionnelle et technique, transfert de compétences, conduite du changement et accompagnement au démarrage.</p>
+                        <ul>
+                            <li>UAT avec utilisateurs clés et procès-verbaux de validation par jalon.</li>
+                            <li>Formation ciblée par profil (accueil, pharmacie, finance, PEC, direction).</li>
+                            <li>Documentation exploitable : guides utilisateurs et documentation technique.</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="info-band">
+                    L’offre inclut la migration Excel vers PostgreSQL selon la stratégie CCT, les tests de non-perte et de réconciliation, la formation métier, ainsi qu’un dispositif de support au go-live pour sécuriser l’adoption. Les livrables couvrent la documentation fonctionnelle et technique, les procédures opérationnelles et les supports de prise en main.
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="modalite">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="titre-modalite">Modalités contractuelles</h2>
+                    <p>Les clauses ci-dessous encadrent l’exécution du contrat relatif à la plateforme digitale AFS.</p>
+                </div>
+
+                <div class="card" style="margin-bottom: 12px;">
+                    <ul>
+                        <li>La dénomination de l’entreprise du prestataire devra être affichée dans le footer de chaque page de la plateforme AFS.</li>
+                        <li>Le prestataire se réserve le droit de mentionner la réussite du projet AFS comme référence commerciale (portfolio, communication institutionnelle, étude de cas), sous réserve du respect des obligations de confidentialité.</li>
+                        <li>Une prime de performance de <strong>10 000 000 Ar</strong> est due au prestataire si l’ensemble de la plateforme est livré dans le délai global de <strong>10 mois</strong>, AFS est très satisfait de la prestation et qu’AFS organise une célébration officielle de mise en service.</li>
+                        <li>Les montants de la présente offre sont exprimés <strong>hors taxes (HT)</strong>. Dans le cadre d’un contrat inter-entreprises, une taxe de <strong>20%</strong> est à prévoir. Cette taxe n’est <strong>pas applicable à la prime de performance</strong>.</li>
+                        <li>AFS se réserve le droit de résilier le contrat à tout moment en cas de non-satisfaction des prestations.</li>
+                    </ul>
+                </div>
+
+                <div class="info-band" style="margin-top: 0;">
+                    Référence de calcul : offre principale <strong>35 000 000 Ar HT</strong> ; estimation TTC (20%) : <strong>42 000 000 Ar</strong>. Prime éventuelle : <strong>10 000 000 Ar</strong> (hors taxe, non soumise au taux de 20%).
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="offre">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="titre-offre">Offre (tarification & planning mensuel)</h2>
+                    <p>Vue consolidée CCT_00 à CCT_04 : livrables attendus par mois et prix mensuel, sur une durée totale de 10 mois.</p>
+                </div>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>Livrables mensuels (synthèse CCT)</th>
+                            <th>Prix mensuel (Ar)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mois 1</strong></td>
+                            <td>Kick-off, socle technique (CI/CD, auth, rôles, audit logs), base PostgreSQL, cadrage migration Excel→PostgreSQL, démarrage Module 1 (squelette & sécurité).</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 2</strong></td>
+                            <td>Module 1 MVP : import DNS, base patients, accueil & éligibilité, file d’attente, recette site pilote, formation accueil, go-live initial.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 3</strong></td>
+                            <td>Démarrage MVP Lot 2 : Module 2 (référentiel médicaments, lots, stock multi-sites, dispensation/dispatch) + Module 3 (socle financier, échéances, synchronisation statuts).</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 4</strong></td>
+                            <td>Module 3 : saisie unifiée, lettrage FIFO, relances automatiques, fiche 360 ; Module 4 : setup, moteur de plafonds et workflow d’émission PEC.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 5</strong></td>
+                            <td>Module 2/3/4 : recette MVP, QR/validateur PEC, dashboard direction (KPI), poursuite migration et go-live consolidé des modules cœur.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 6</strong></td>
+                            <td>Phase 2 (Lot A) : Module 1 dossier médical (consultations, historique) + Module 2 workflow commandes unifiées multi-sites.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 7</strong></td>
+                            <td>Phase 2 (Lot A) : ordonnances numériques, renvois, supply chain avancée (fournisseurs, commandes express), go-live Lot A.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 8</strong></td>
+                            <td>Phase 2 (Lot B) : portail adhérent recouvrement (consultation solde, reçus) + module 4 rapprochement PEC/factures (démarrage).</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 9</strong></td>
+                            <td>Phase 2 (Lot B) : paiements digitaux & scoring recouvrement + finalisation rapprochements PEC et gestion des écarts, go-live Lot B.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mois 10</strong></td>
+                            <td>Phase 3 : portails V3 (adhérents DNS et prestataires PEC), documentation finale, runbook, rapport de clôture migration et PV de recette final.</td>
+                            <td><strong>3 500 000 Ar</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="offer-box">
+                    <div class="top">
+                        <div>
+                            <div class="title">Montant total de l’offre d’exécution</div>
+                            <div class="amount">35 000 000 Ar</div>
+                            <div class="sub">Trente-cinq millions Ariary — Offre complète CCT_00 à CCT_04</div>
+                            <div class="sub"><strong>Prime de performance conditionnelle :</strong> + 10 000 000 Ar (selon modalités contractuelles).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-band">
+                    Modalité de paiement : règlement mensuel, soit 10 mensualités fixes de <strong>3 500 000 Ar</strong> sur 10 mois, à la fin de chaque mois sur validation du livrable mensuel.<br>
+                    Hors périmètre financier : hébergement VPS, nom de domaine, connectivité internet, matériel local et services tiers externes. Ces coûts restent à la charge d’AFS.
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <h2 id="titre-contact">Validation & contact</h2>
+                    <p>Après validation, le lancement démarre dès l’achat du serveur et du nom de domaine, avec assistance du prestataire.</p>
+                </div>
+                <div class="contact">
+                    <p><strong>Prestataire :</strong> RALAIARISOA Tolotriniavo Hubert</p>
+                    <p><strong>Téléphone :</strong> +261342476471</p>
+                    <p><strong>Email :</strong> tolotriniavo.ralaiarisoa@gmail.com</p>
+                    <p><strong>Objet :</strong> Exécution des spécifications de la plateforme digitale AFS</p>
+                    <p><strong>Montant total :</strong> 35 000 000 Ar</p>
+                    <p><strong>Modalité de paiement :</strong> 10 mensualités de 3 500 000 Ar</p>
+                    <p><strong>Référence :</strong> OFFRE-2026-AFS-EXEC-01</p>
+                    <p><strong>Validité de l’offre :</strong> jusqu'à fin juin 2026</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"></footer>
+</body>
+
+</html>
